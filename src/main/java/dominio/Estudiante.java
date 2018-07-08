@@ -2,6 +2,7 @@ package dominio;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 public class Estudiante {
 	
@@ -62,5 +63,10 @@ public class Estudiante {
 	public void agregarTarea(Tarea unaTarea) {
 		
 		this.tareas.add(unaTarea);
+	}
+
+	public Collection<Tarea> getTareas() {
+		
+		return this.tareas;
 	}
 }

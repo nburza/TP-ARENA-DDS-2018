@@ -5,9 +5,20 @@ import java.util.List;
 
 public class Tarea {
 	
+	protected String descripcion;
 	protected List<String> notas = new ArrayList<String>();
-	private TipoDeNota tipoDeNota;
+	protected TipoDeNota tipoDeNota;
 	
+	public Tarea(String descripcion, TipoDeNota tipoDeNota) {
+		
+		this.descripcion = descripcion;
+		this.tipoDeNota = tipoDeNota;
+	}
+	
+	public String getDescripcion() {
+		
+		return this.descripcion;
+	}
 	public void agregarNota(String unaNota) {
 		
 		if (tipoDeNota.esNotaValida(unaNota))
