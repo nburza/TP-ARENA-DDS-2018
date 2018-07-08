@@ -9,9 +9,9 @@ public class Estudiante {
 	private String apellido;
 	private String legajo;
 	private String usuarioGithub;
-	private Collection<TareaGenerica> tareas = new HashSet<TareaGenerica>();
+	private Collection<Tarea> tareas = new HashSet<Tarea>();
 	
-	public Estudiante(String nombre, String apellido, String legajo, String usuarioGithub, Collection<TareaGenerica> tareas) {
+	public Estudiante(String nombre, String apellido, String legajo, String usuarioGithub, Collection<Tarea> tareas) {
 		
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -59,7 +59,7 @@ public class Estudiante {
 		this.usuarioGithub = usuarioGithub;
 	}
 	
-	public void agregarTarea(TareaGenerica unaTarea) {
+	public void agregarTarea(Tarea unaTarea) {
 		
 		this.tareas.add(unaTarea);
 	}
