@@ -63,4 +63,8 @@ public class Estudiante {
 		
 		this.tareas.add(unaTarea);
 	}
+	
+	public Collection<Tarea> getTareas() {
+		return tareas;
+	}
 }
