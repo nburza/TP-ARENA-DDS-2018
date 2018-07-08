@@ -25,11 +25,12 @@ protected Collection<Estudiante> estudiantes = new HashSet<>();
 		estudiantes.remove(unEstudiante);
 	}
 	
-	public Optional<Estudiante> buscarPorLegajo(String unLegajo) {
+	public Estudiante buscarPorLegajo(String unLegajo) {
 			
 		return estudiantes
 				.stream()
 				.filter(estudiante -> estudiante.getLegajo().equals(unLegajo))
-				.findFirst();
+				.findFirst()
+				.get();
 	}
 }

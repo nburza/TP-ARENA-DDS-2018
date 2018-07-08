@@ -17,7 +17,7 @@ public class RepositorioEstudiantesTest {
 		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null, null);
 		RepositorioDeEstudiantes repositorio = new RepositorioDeEstudiantes();
 		repositorio.agregar(unEstudiante);
-		Optional<Estudiante> estudianteRetornado = repositorio.buscarPorLegajo("1560335");
+		Estudiante estudianteRetornado = repositorio.buscarPorLegajo("1560335");
 		Assert.assertEquals(unEstudiante, estudianteRetornado);
 	}
 
