@@ -9,7 +9,9 @@ public class Tarea {
 	private TipoDeNota tipoDeNota;
 	
 	public void agregarNota(String unaNota) {
-		this.notas.add(unaNota);
+		
+		if (tipoDeNota.esNotaValida(unaNota))
+			this.notas.add(unaNota);
 	}
 	
 	public String notaActual() {

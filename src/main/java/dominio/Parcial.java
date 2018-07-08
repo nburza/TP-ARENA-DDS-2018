@@ -7,7 +7,8 @@ public class Parcial extends Tarea {
 		if(this.notas.size() < 3) {
 			this.notas.add(unaNota);
 		}
-		/*else
-			TIRAR EXCEPTION */
+		/*else {
+			throw LimiteDeNotasexception extends RuntimeException;
+		}*/
 	}
 }
