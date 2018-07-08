@@ -68,5 +68,6 @@ public class Estudiante {
 	public Collection<Tarea> getTareas() {
 		
 		return this.tareas;
+
 	}
 }
