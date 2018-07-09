@@ -11,7 +11,6 @@ import dominio.RenglonTareas;
 @Observable
 public class VerNotasViewModel {
 
-	private Estudiante unEstudiante;
 	private List<RenglonTareas> renglonesTareas;
 	
 	public VerNotasViewModel(Estudiante unEstudiante) {
