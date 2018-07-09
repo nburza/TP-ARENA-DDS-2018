@@ -13,6 +13,7 @@ import org.uqbar.arena.windows.WindowOwner;
 import dominio.Estudiante;
 import ui.viewmodel.ActualizarDatosViewModel;
 import ui.viewmodel.IngresoViewModel;
+import ui.viewmodel.MenuViewModel;
 
 public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 
@@ -29,7 +30,7 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 		new Label(mainPanel).setText("Ingrese el num de Legajo");
 		new TextBox(mainPanel).setWidth(300).bindValueToProperty("legajo");
 		
-		new Label(mainPanel).setText("Ingrese la Contraseña");
+		new Label(mainPanel).setText("Ingrese la Password");
 		new PasswordField(mainPanel).setWidth(300);
 
 	}
@@ -42,9 +43,8 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 	
 	private void buscarEstudianteYAbrirVentana() {
 		this.getModelObject().buscarEstudiante();
-		Dialog<?> dialog = new ActualizarDatosWindow(this, 
-				new ActualizarDatosViewModel(this.getModelObject().getEstudiante()));
-		dialog.open();
-		dialog.onAccept(() -> {});
+		MenuWindow nuevaVentana = new MenuWindow(this, 
+				new MenuViewModel(this.getModelObject().getEstudiante()));
+		nuevaVentana.open();
 	}
 }

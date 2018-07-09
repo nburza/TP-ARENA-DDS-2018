@@ -1,8 +1,10 @@
 package ui.windows;
 
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
@@ -10,13 +12,13 @@ import dominio.Estudiante;
 import dominio.RenglonTareas;
 import ui.viewmodel.VerNotasViewModel;
 
-public class VerNotasWindow extends SimpleWindow<VerNotasViewModel>{
+public class VerNotasWindow extends Dialog<VerNotasViewModel>{
 
-	public VerNotasWindow(WindowOwner parent, Estudiante unEstudiante) {
-		
-		super(parent, new VerNotasViewModel(unEstudiante));
+	public VerNotasWindow(WindowOwner owner, VerNotasViewModel model) {
+		super(owner, model);
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	protected void createFormPanel(Panel formPanel) {
 		this.setTitle("Ver notas");
 		
@@ -26,23 +28,32 @@ public class VerNotasWindow extends SimpleWindow<VerNotasViewModel>{
 		Column<RenglonTareas> columnaTarea = new Column<RenglonTareas>(tableTareas);
 		columnaTarea.setTitle("Tarea");
 		columnaTarea.bindContentsToProperty("descripcion");
+		columnaTarea.setFixedSize(500);
 		
 		Column<RenglonTareas> columnaNota = new Column<RenglonTareas>(tableTareas);
 		columnaNota.setTitle("Nota actual");
 		columnaNota.bindContentsToProperty("notaActual");
+		columnaNota.setFixedSize(250);
 		
 		Column<RenglonTareas> columnaAprobo = new Column<RenglonTareas>(tableTareas);
-		columnaAprobo.setTitle("Aprob�");
+		columnaAprobo.setTitle("Aprobo");
 		columnaAprobo.bindContentsToProperty("aprobo");
-		
-		tableTareas.setHeight(900);
-		tableTareas.setWidth(900);
-		
+		columnaAprobo.setFixedSize(250);
+				
 	}
 
 	@Override
-	protected void addActions(Panel arg0) {
+	protected void addActions(Panel panelBotones) {
 		// TODO Auto-generated method stub
-		
+		new Button(panelBotones)
+			.setCaption("Volver")
+			.onClick(this::accept)
+			.setAsDefault();
+	}
+	
+	@Override
+	protected void executeTask()
+	{
+		this.close();
 	}
 }
