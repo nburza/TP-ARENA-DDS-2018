@@ -1,6 +1,11 @@
 package dominio;
 
 public class NotaNumerica implements TipoDeNota {
+//	private String nota;
+//	public NotaNumerica(String nota) {
+//		this.nota = nota;
+//	}
+	
 
 	@Override
 	public boolean esAprobatoria(String unaNota) {

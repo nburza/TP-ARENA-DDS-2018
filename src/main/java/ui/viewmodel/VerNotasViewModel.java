@@ -23,4 +23,8 @@ public class VerNotasViewModel {
 				.map(t -> new RenglonTareas(t))
 				.collect(Collectors.toList());
 	}
+
+	public List<RenglonTareas> getRenglonesTareas() {
+		return renglonesTareas;
+	}
 }

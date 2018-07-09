@@ -32,11 +32,11 @@ public class VerNotasWindow extends SimpleWindow<VerNotasViewModel>{
 		columnaNota.bindContentsToProperty("notaActual");
 		
 		Column<RenglonTareas> columnaAprobo = new Column<RenglonTareas>(tableTareas);
-		columnaAprobo.setTitle("Aprobó");
+		columnaAprobo.setTitle("Aprobï¿½");
 		columnaAprobo.bindContentsToProperty("aprobo");
 		
-		tableTareas.setHeight(300);
-		tableTareas.setWidth(600);
+		tableTareas.setHeight(900);
+		tableTareas.setWidth(900);
 		
 	}
 

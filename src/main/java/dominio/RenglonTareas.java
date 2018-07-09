@@ -20,4 +20,16 @@ public class RenglonTareas {
 			this.aprobo = "NO";
 		}
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public String getNotaActual() {
+		return notaActual;
+	}
+
+	public String getAprobo() {
+		return aprobo;
+	}
 }
