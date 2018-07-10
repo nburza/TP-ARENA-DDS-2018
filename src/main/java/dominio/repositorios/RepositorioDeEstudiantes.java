@@ -42,4 +42,11 @@ public class RepositorioDeEstudiantes {
 				.findFirst()
 				.get();
 	}
+	
+	public static boolean validarPassDeUnLegajo(String unLegajo, String pass) {
+		return estudiantes
+				.stream()
+				.anyMatch(estudiante -> 	estudiante.getLegajo().equals(unLegajo)
+										&& estudiante.validarPass(pass));
+	}
 }

@@ -17,6 +17,7 @@ public class ActualizarDatosViewModel {
 	private String apellido;
 	private String legajo;
 	private String usuarioGitHub;
+	private String pass;
 	private Collection<Tarea> tareas;
 
 	public ActualizarDatosViewModel(Estudiante estudiante) {
@@ -26,12 +27,14 @@ public class ActualizarDatosViewModel {
 		this.apellido = estudiante.getApellido();
 		this.legajo = estudiante.getLegajo();
 		this.usuarioGitHub = estudiante.getUsuarioGithub();
+		this.pass = estudiante.getPass();
 		this.tareas = estudiante.getTareas();
 	}
 
 	public void actualizarDatos(RepositorioDeEstudiantes repositorio) {
 		repositorio.agregar(new Estudiante(	nombre, apellido, legajo, 
-											usuarioGitHub, tareas));
+											usuarioGitHub, pass,
+											tareas));
 		repositorio.borrar(estudiante);
 	}
 

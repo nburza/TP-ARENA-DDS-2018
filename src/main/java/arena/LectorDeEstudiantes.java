@@ -1,6 +1,5 @@
 package arena;
 
-import java.util.Collection;
 import java.util.HashSet;
 
 import org.uqbar.arena.Application;
@@ -22,7 +21,7 @@ public class LectorDeEstudiantes extends Application {
 
 	@Override
 	protected Window<?> createMainWindow() {
-		Estudiante nompe = new Estudiante("Nom","Ape","10","git", new HashSet<Tarea>());
+		Estudiante nompe = new Estudiante("Nom","Ape","10","git","pass", new HashSet<Tarea>());
 		NotaNumerica num = new NotaNumerica();
 		Tarea tarea = new Tarea("prueba", num);
 		tarea.agregarNota("7");

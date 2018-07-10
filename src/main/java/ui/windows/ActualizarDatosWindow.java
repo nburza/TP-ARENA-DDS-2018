@@ -41,8 +41,7 @@ public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosV
 	}
 
 	@Override
-	protected void addActions(Panel panelBotones) 
-	{
+	protected void addActions(Panel panelBotones) {
 		new Button(panelBotones).setCaption("Guardar Cambios").onClick(this::accept).setAsDefault();
 		new Button(panelBotones).setCaption("Cancelar").onClick(this::cancel);
 	}
@@ -51,7 +50,7 @@ public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosV
 	protected void executeTask()
 	{
 		getModelObject().actualizarDatos(RepositorioDeEstudiantes.getRepo());
-		
+
 		super.executeTask();
 	}
 }

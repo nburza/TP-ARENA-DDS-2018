@@ -1,9 +1,5 @@
 package dominio.test;
 
-import static org.junit.Assert.*;
-
-import java.util.Optional;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,9 +10,10 @@ public class RepositorioEstudiantesTest {
 
 	@Test
 	public void buscoEstudiantePorLegajoValidoTest() {
-		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null, null);
-		RepositorioDeEstudiantes repositorio = new RepositorioDeEstudiantes();
+		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null ,null, null);
+		RepositorioDeEstudiantes repositorio = RepositorioDeEstudiantes.getRepo();
 		repositorio.agregar(unEstudiante);
+//		Optional<Estudiante> estudianteRetornado = repositorio.buscarPorLegajo("1560335");
 		Estudiante estudianteRetornado = repositorio.buscarPorLegajo("1560335");
 		Assert.assertEquals(unEstudiante, estudianteRetornado);
 	}

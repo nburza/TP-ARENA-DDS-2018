@@ -9,6 +9,7 @@ import dominio.Estudiante;
 public class IngresoViewModel {
 	
 	private String legajo;
+	private String pass;
 	private Estudiante estudiante;
 	
 	public IngresoViewModel(){	}
@@ -32,5 +33,13 @@ public class IngresoViewModel {
 	public Estudiante getEstudiante() {
 		
 		return estudiante;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 }

@@ -11,9 +11,12 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import dominio.Estudiante;
+import dominio.repositorios.RepositorioDeEstudiantes;
 import ui.viewmodel.ActualizarDatosViewModel;
+import ui.viewmodel.DatosIngresadosErroneosViewModel;
 import ui.viewmodel.IngresoViewModel;
 import ui.viewmodel.MenuViewModel;
+import ui.viewmodel.VerNotasViewModel;
 
 public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 
@@ -31,7 +34,7 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 		new TextBox(mainPanel).setWidth(300).bindValueToProperty("legajo");
 		
 		new Label(mainPanel).setText("Ingrese la Password");
-		new PasswordField(mainPanel).setWidth(300);
+		new PasswordField(mainPanel).setWidth(300).bindValueToProperty("pass");
 
 	}
 	
@@ -42,9 +45,18 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 	}
 	
 	private void buscarEstudianteYAbrirVentana() {
-		this.getModelObject().buscarEstudiante();
-		MenuWindow nuevaVentana = new MenuWindow(this, 
-				new MenuViewModel(this.getModelObject().getEstudiante()));
-		nuevaVentana.open();
+		if(RepositorioDeEstudiantes.validarPassDeUnLegajo(this.getModelObject().getLegajo(),
+															this.getModelObject().getPass())){
+			this.getModelObject().buscarEstudiante();
+			MenuWindow nuevaVentana = new MenuWindow(this, 
+					new MenuViewModel(this.getModelObject().getLegajo()));
+			nuevaVentana.open();
+		}
+		else{
+			Dialog<?> dialog = new DatosIngresadosErroneosWindows(this,
+					new DatosIngresadosErroneosViewModel());
+			dialog.open();
+			dialog.onAccept(() -> {});
+		}
 	}
 }
