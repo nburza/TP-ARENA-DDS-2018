@@ -5,6 +5,8 @@ import org.junit.Test;
 import dominio.NotaNumerica;
 import dominio.Parcial;
 import dominio.exceptions.LimiteDeNotasException;
+import dominio.exceptions.NotaInvalidaException;
+
 import org.junit.Assert;
 
 public class ParcialTest {
@@ -13,11 +15,27 @@ public class ParcialTest {
 	public void ParcialAplicaLimiteDeNotasTest() throws LimiteDeNotasException {
 		
 		Parcial unParcial = new Parcial(null, new NotaNumerica());
-		unParcial.agregarNota("5");
-		unParcial.agregarNota("3");
-		unParcial.agregarNota("4");
 		try {
-			unParcial.agregarNota("10");
+			unParcial.agregarNota("5");
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+		try {
+			unParcial.agregarNota("3");
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+		try {
+			unParcial.agregarNota("4");
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+		try {
+			try {
+				unParcial.agregarNota("10");
+			} catch (NotaInvalidaException e) {
+				e.printStackTrace();
+			}
 		}
 		catch(LimiteDeNotasException unaLimiteDeNotasException) {
 			Assert.assertEquals(unaLimiteDeNotasException.getMessage(), "Un parcial no admite mas notas");
@@ -25,16 +43,32 @@ public class ParcialTest {
 	}
 	
 	@Test
-	public void ParcialRecibeNotaInvalidaTest() throws LimiteDeNotasException {
+	public void ParcialRecibeNotaInvalidaTest() throws LimiteDeNotasException, NotaInvalidaException {
 	
 		Parcial unParcial = new Parcial(null, new NotaNumerica());
-		unParcial.agregarNota("5");
-		unParcial.agregarNota("3");
-		unParcial.agregarNota("4");
 		try {
-			unParcial.agregarNota("M");
+			unParcial.agregarNota("5");
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
 		}
-		catch(Exception unaException) {
+		try {
+			unParcial.agregarNota("3");
+		} catch (NotaInvalidaException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			unParcial.agregarNota("4");
+		} catch (NotaInvalidaException e) {
+			e.printStackTrace();
+		}
+		try {
+			try {
+				unParcial.agregarNota("M");
+			} catch (NotaInvalidaException e) {
+				e.printStackTrace();
+			}
+		}
+		catch(NotaInvalidaException unaException) {
 			
 			Assert.assertEquals(unaException.getMessage(), "Un parcial no admite mas notas");
 		}

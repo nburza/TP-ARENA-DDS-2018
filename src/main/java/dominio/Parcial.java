@@ -1,6 +1,7 @@
 package dominio;
 
 import dominio.exceptions.LimiteDeNotasException;
+import dominio.exceptions.NotaInvalidaException;
 
 public class Parcial extends Tarea {
 	
@@ -10,12 +11,12 @@ public class Parcial extends Tarea {
 	}
 
 	@Override
-	public void agregarNota(String unaNota) throws LimiteDeNotasException {
-		if(this.notas.size() < 3 && this.tipoDeNota.esNotaValida(unaNota)) {
+	public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNotasException {
+		if(this.notas.size() <= 3 && this.tipoDeNota.esNotaValida(unaNota)) {
 			this.notas.add(unaNota);
 		}
 		else {
-			throw new LimiteDeNotasException("Un parcial no admite mas notas");
+			throw new NotaInvalidaException("Un parcial no admite mas notas");
 		}
 	}
 }

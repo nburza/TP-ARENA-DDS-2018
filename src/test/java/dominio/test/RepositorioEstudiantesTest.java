@@ -1,5 +1,6 @@
 package dominio.test;
 
+import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,17 +12,17 @@ public class RepositorioEstudiantesTest {
 
 	@Test
 	public void buscoEstudiantePorLegajoValidoTest() throws LegajoRepetidoException {
-		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null, null);
+		Estudiante unEstudiante = new Estudiante(null, null, "15460335", null, null, null);
 		RepositorioDeEstudiantes repositorio = new RepositorioDeEstudiantes();
 		repositorio.agregar(unEstudiante);
-		Estudiante estudianteRetornado = repositorio.buscarPorLegajo("1560335");
+		Estudiante estudianteRetornado = repositorio.buscarPorLegajo("15460335");
 		Assert.assertEquals(unEstudiante, estudianteRetornado);
 	}
-
+	
 	@Test
 	public void siTengoLegajoRepetidoArrojoExceptionTest() throws LegajoRepetidoException {
-		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null, null);
-		Estudiante otroEstudiante = new Estudiante(null, null, "1560335", null, null);
+		Estudiante unEstudiante = new Estudiante(null, null, "1560335", null, null, null);
+		Estudiante otroEstudiante = new Estudiante(null, null, "1560335", null, null, null);
 		RepositorioDeEstudiantes repositorio = new RepositorioDeEstudiantes();
 		repositorio.agregar(unEstudiante);
 		try {
@@ -33,4 +34,15 @@ public class RepositorioEstudiantesTest {
 		}
 		
 	}
+
+	@Test
+	public void verSivalidarPassDeUnLegajoFunciona() throws LegajoRepetidoException {
+		Estudiante unEstudiante = new Estudiante(null, null, "156035", null, "pass", null);
+		RepositorioDeEstudiantes repositorio = new RepositorioDeEstudiantes();
+		repositorio.agregar(unEstudiante);
+
+		Assert.assertTrue(repositorio.validarPassDeUnLegajo("156035", "pass"));
+		Assert.assertTrue(!repositorio.validarPassDeUnLegajo("156035", "pahss"));
+	}
+
 }
