@@ -4,29 +4,30 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import dominio.Estudiante;
+import dominio.exceptions.LegajoRepetidoException;
 
 public class RepositorioDeEstudiantes {
 
-	private static RepositorioDeEstudiantes instancia;
 	protected static Collection<Estudiante> estudiantes = new HashSet<>();
 	
-	private RepositorioDeEstudiantes() {}
-	
-	public static RepositorioDeEstudiantes getRepo() {
-		if (instancia == null) {
-			instancia = new RepositorioDeEstudiantes();
-		}
-		return instancia;
-	}
+	public RepositorioDeEstudiantes() {}
 	
 	public Collection<Estudiante> getAllInstances() {
 		
 		return estudiantes;
 	}	
 	
-	public static void agregar(Estudiante unEstudiante) {
+	public void agregar(Estudiante unEstudiante) throws LegajoRepetidoException {
 		
-		estudiantes.add(unEstudiante);
+		if(this.yaExisteLegajo(unEstudiante)) {
+			
+			throw new LegajoRepetidoException("Ya existe un estudiante con este legajo");
+		}
+		else {
+			
+			estudiantes.add(unEstudiante);
+		}
+		
 	}
 		
 	public static void borrar(Estudiante unEstudiante) {
@@ -41,5 +42,13 @@ public class RepositorioDeEstudiantes {
 				.filter(estudiante -> estudiante.getLegajo().equals(unLegajo))
 				.findFirst()
 				.get();
+	}
+	
+	private boolean yaExisteLegajo(Estudiante unEstudiante) {
+		
+		return estudiantes
+				.stream()
+				.anyMatch(estudiante -> estudiante.getLegajo().equals(unEstudiante.getLegajo()));
+				
 	}
 }

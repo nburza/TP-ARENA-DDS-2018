@@ -5,13 +5,12 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import dominio.Estudiante;
 import dominio.RenglonTareas;
 import ui.viewmodel.VerNotasViewModel;
 
+@SuppressWarnings("serial")
 public class VerNotasWindow extends Dialog<VerNotasViewModel>{
 
 	public VerNotasWindow(WindowOwner owner, VerNotasViewModel model) {
@@ -28,17 +27,19 @@ public class VerNotasWindow extends Dialog<VerNotasViewModel>{
 		Column<RenglonTareas> columnaTarea = new Column<RenglonTareas>(tableTareas);
 		columnaTarea.setTitle("Tarea");
 		columnaTarea.bindContentsToProperty("descripcion");
-		columnaTarea.setFixedSize(500);
+		columnaTarea.setFixedSize(200);
 		
 		Column<RenglonTareas> columnaNota = new Column<RenglonTareas>(tableTareas);
 		columnaNota.setTitle("Nota actual");
 		columnaNota.bindContentsToProperty("notaActual");
-		columnaNota.setFixedSize(250);
+		columnaNota.setFixedSize(80);
+		columnaNota.alignCenter();
 		
 		Column<RenglonTareas> columnaAprobo = new Column<RenglonTareas>(tableTareas);
 		columnaAprobo.setTitle("Aprobo");
 		columnaAprobo.bindContentsToProperty("aprobo");
-		columnaAprobo.setFixedSize(250);
+		columnaAprobo.setFixedSize(60);
+		columnaAprobo.alignCenter();
 				
 	}
 

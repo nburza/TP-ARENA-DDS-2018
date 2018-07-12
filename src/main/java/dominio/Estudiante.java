@@ -71,4 +71,11 @@ public class Estudiante {
 		return this.tareas;
 
 	}
+
+	public void confirmarCambios(String nombre2, String apellido2, String usuarioGitHub2) {
+		// TODO Auto-generated method stub
+		this.nombre = nombre2;
+		this.apellido = apellido2;
+		this.usuarioGithub = usuarioGitHub2;
+	}
 }

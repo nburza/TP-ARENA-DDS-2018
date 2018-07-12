@@ -50,7 +50,7 @@ public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosV
 	@Override
 	protected void executeTask()
 	{
-		getModelObject().actualizarDatos(RepositorioDeEstudiantes.getRepo());
+		getModelObject().actualizarDatos();
 		
 		super.executeTask();
 	}

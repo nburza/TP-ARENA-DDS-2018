@@ -3,6 +3,9 @@ package dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import dominio.exceptions.LimiteDeNotasException;
+import dominio.exceptions.NotaInvalidaException;
+
 public class Tarea {
 	
 	protected String descripcion;
@@ -19,10 +22,16 @@ public class Tarea {
 		
 		return this.descripcion;
 	}
-	public void agregarNota(String unaNota) {
+	public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNotasException {
 		
-		if (tipoDeNota.esNotaValida(unaNota))
+		if (tipoDeNota.esNotaValida(unaNota)) {
+			
 			this.notas.add(unaNota);
+		}
+		else {
+			
+			throw new NotaInvalidaException("La nota ingresada es invalida");
+		}
 	}
 	
 	public String notaActual() {

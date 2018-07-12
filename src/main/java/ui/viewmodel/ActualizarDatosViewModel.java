@@ -29,10 +29,8 @@ public class ActualizarDatosViewModel {
 		this.tareas = estudiante.getTareas();
 	}
 
-	public void actualizarDatos(RepositorioDeEstudiantes repositorio) {
-		repositorio.agregar(new Estudiante(	nombre, apellido, legajo, 
-											usuarioGitHub, tareas));
-		repositorio.borrar(estudiante);
+	public void actualizarDatos() {
+		estudiante.confirmarCambios(this.nombre, this.apellido, this.usuarioGitHub);
 	}
 
 	public String getNombre() {
