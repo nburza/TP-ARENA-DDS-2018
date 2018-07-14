@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.uqbar.commons.model.annotations.Observable;
 
 import dominio.Estudiante;
-import dominio.RenglonTareas;
 
 @Observable
 public class VerNotasViewModel {

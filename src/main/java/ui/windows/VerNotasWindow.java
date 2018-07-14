@@ -5,13 +5,14 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
+import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import dominio.RenglonTareas;
+import ui.viewmodel.RenglonTareas;
 import ui.viewmodel.VerNotasViewModel;
 
 @SuppressWarnings("serial")
-public class VerNotasWindow extends Dialog<VerNotasViewModel>{
+public class VerNotasWindow extends SimpleWindow<VerNotasViewModel>{
 
 	public VerNotasWindow(WindowOwner owner, VerNotasViewModel model) {
 		super(owner, model);
@@ -45,16 +46,14 @@ public class VerNotasWindow extends Dialog<VerNotasViewModel>{
 
 	@Override
 	protected void addActions(Panel panelBotones) {
-		// TODO Auto-generated method stub
+		
 		new Button(panelBotones)
 			.setCaption("Volver")
-			.onClick(this::accept)
-			.setAsDefault();
+			.onClick(this::volver);
 	}
 	
-	@Override
-	protected void executeTask()
-	{
+	private void volver() {
+		
 		this.close();
 	}
 }

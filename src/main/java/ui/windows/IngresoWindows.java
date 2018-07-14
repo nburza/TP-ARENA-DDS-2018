@@ -19,8 +19,8 @@ import ui.viewmodel.MenuViewModel;
 
 public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 
-	public IngresoWindows(WindowOwner owner) {
-		super(owner, new IngresoViewModel());
+	public IngresoWindows(WindowOwner owner, RepositorioDeEstudiantes repositorio) {
+		super(owner, new IngresoViewModel(repositorio));
 	}
 
 	@Override
@@ -44,9 +44,9 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 	}
 	
 	private void buscarEstudianteYAbrirVentana() {
-		if(RepositorioDeEstudiantes.validarPassDeUnLegajo(this.getModelObject().getLegajo(),
+		if(this.getModelObject().getRepo().validarPassDeUnLegajo(this.getModelObject().getLegajo(),
 															this.getModelObject().getPass())){
-			this.getModelObject().buscarEstudiante();
+			this.getModelObject().buscarEstudiante(this.getModelObject().getRepo());
 			MenuWindow nuevaVentana = new MenuWindow(this, 
 					new MenuViewModel(this.getModelObject().getEstudiante()));
 			nuevaVentana.open();

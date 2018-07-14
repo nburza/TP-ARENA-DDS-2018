@@ -1,6 +1,8 @@
 package dominio.exceptions;
 
-public class NotaInvalidaException extends Exception {
+import org.uqbar.commons.model.exceptions.UserException;
+
+public class NotaInvalidaException extends UserException {
 
 	public NotaInvalidaException(String mensaje) {
 		

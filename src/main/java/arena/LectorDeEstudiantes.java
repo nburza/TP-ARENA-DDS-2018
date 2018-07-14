@@ -47,6 +47,6 @@ public class LectorDeEstudiantes extends Application {
 		} catch (LegajoRepetidoException e) {
 			e.printStackTrace();
 		}
-		return new IngresoWindows(this);
+		return new IngresoWindows(this, repositorioDeEstudiantes);
 	}
 }

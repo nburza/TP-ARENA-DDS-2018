@@ -1,6 +1,5 @@
 package ui.windows;
 
-import org.uqbar.arena.aop.windows.TransactionalDialog;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
@@ -8,13 +7,12 @@ import org.uqbar.arena.widgets.GroupPanel;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import dominio.Estudiante;
 import ui.viewmodel.ActualizarDatosViewModel;
-import dominio.repositorios.*;
 
-public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosViewModel> {
+public class ActualizarDatosWindow  extends SimpleWindow<ActualizarDatosViewModel> {
 	
 	public ActualizarDatosWindow(WindowOwner owner, ActualizarDatosViewModel model) {
 		super(owner, model);
@@ -31,7 +29,7 @@ public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosV
 		panel.setLayout(new ColumnLayout(2));
 		
 		new Label(panel).setText("Legajo: ");
-		new Label(panel).setWidth(150).bindValueToProperty("legajo");
+		new TextBox(panel).setWidth(150).bindValueToProperty("legajo");
 		new Label(panel).setText("Nombre: ");
 		new TextBox(panel).setWidth(150).bindValueToProperty("nombre");
 		new Label(panel).setText("Apellido: ");
@@ -41,17 +39,16 @@ public class ActualizarDatosWindow  extends TransactionalDialog<ActualizarDatosV
 	}
 
 	@Override
-	protected void addActions(Panel panelBotones) 
-	{
-		new Button(panelBotones).setCaption("Guardar Cambios").onClick(this::accept).setAsDefault();
-		new Button(panelBotones).setCaption("Cancelar").onClick(this::cancel);
+	protected void addActions(Panel panelAction) {
+		// TODO Auto-generated method stub
+		new Button(panelAction)
+		.setCaption("Volver")
+		.onClick(this::volver);
+		
 	}
 	
-	@Override
-	protected void executeTask()
-	{
-		getModelObject().actualizarDatos();
+	private void volver() {
 		
-		super.executeTask();
+		this.close();
 	}
 }

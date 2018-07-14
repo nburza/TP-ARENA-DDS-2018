@@ -1,6 +1,8 @@
 package dominio.exceptions;
 
-public class LimiteDeNotasException extends Exception{
+import org.uqbar.commons.model.exceptions.UserException;
+
+public class LimiteDeNotasException extends UserException{
 	
 	public LimiteDeNotasException(String mensaje) {
 		

@@ -1,6 +1,8 @@
-package dominio;
+package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
+
+import dominio.Tarea;
 
 @Observable
 public class RenglonTareas {

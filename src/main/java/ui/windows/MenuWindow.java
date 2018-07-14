@@ -14,12 +14,11 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 
 	public MenuWindow(WindowOwner parent, MenuViewModel model) {
 		super(parent, model);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected void addActions(Panel panelAction) {
-		// TODO Auto-generated method stub
+		
 		new Button(panelAction)
 		.setCaption("Actualizar mis datos")
 		.onClick(this::actualizarDatos);
@@ -37,18 +36,16 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 	
 	public void actualizarDatos() {
 		
-		Dialog<?> dialog = new ActualizarDatosWindow(this, 
+		ActualizarDatosWindow dialog = new ActualizarDatosWindow(this, 
 				new ActualizarDatosViewModel(this.getModelObject().getEstudiante()));
 		dialog.open();
-		dialog.onAccept(() -> {});
 	}
 	
 	public void verNotas() {
 		
-		Dialog<?> dialog = new VerNotasWindow(this,
+		VerNotasWindow verNotasWindow = new VerNotasWindow(this,
 				new VerNotasViewModel(this.getModelObject().getEstudiante()));
-		dialog.open();
-		dialog.onAccept(() -> {});
+		verNotasWindow.open();
 		
 	}
 

@@ -75,8 +75,9 @@ public class Estudiante {
 
 	}
 
-	public void confirmarCambios(String nombre2, String apellido2, String usuarioGitHub2) {
+	public void confirmarCambios(String legajo2, String nombre2, String apellido2, String usuarioGitHub2) {
 		// TODO Auto-generated method stub
+		this.legajo = legajo2;
 		this.nombre = nombre2;
 		this.apellido = apellido2;
 		this.usuarioGithub = usuarioGitHub2;

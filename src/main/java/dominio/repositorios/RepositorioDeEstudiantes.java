@@ -8,7 +8,7 @@ import dominio.exceptions.LegajoRepetidoException;
 
 public class RepositorioDeEstudiantes {
 
-	protected static Collection<Estudiante> estudiantes = new HashSet<>();
+	protected Collection<Estudiante> estudiantes = new HashSet<>();
 
 	public RepositorioDeEstudiantes() {}
 
@@ -26,12 +26,12 @@ public class RepositorioDeEstudiantes {
 		}
 	}
 
-	public static void borrar(Estudiante unEstudiante) {
+	public void borrar(Estudiante unEstudiante) {
 
 		estudiantes.remove(unEstudiante);
 	}
 
-	public static Estudiante buscarPorLegajo(String unLegajo) {
+	public Estudiante buscarPorLegajo(String unLegajo) {
 
 		return estudiantes
 				.stream()
@@ -47,7 +47,7 @@ public class RepositorioDeEstudiantes {
 				.anyMatch(estudiante -> estudiante.getLegajo().equals(unEstudiante.getLegajo()));		
 	}
 
-	public static boolean validarPassDeUnLegajo(String unLegajo, String pass) {
+	public boolean validarPassDeUnLegajo(String unLegajo, String pass) {
 		return estudiantes
 				.stream()
 				.anyMatch(estudiante -> 	estudiante.getLegajo().equals(unLegajo)
