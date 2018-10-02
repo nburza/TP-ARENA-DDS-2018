@@ -2,6 +2,7 @@ package dominio.test;
 
 import org.junit.Test;
 
+import dominio.Asignacion;
 import dominio.NotaNumerica;
 import dominio.Parcial;
 import dominio.exceptions.LimiteDeNotasException;
@@ -15,24 +16,26 @@ public class ParcialTest {
 	public void ParcialAplicaLimiteDeNotasTest() throws LimiteDeNotasException {
 		
 		Parcial unParcial = new Parcial(null, new NotaNumerica());
+		Asignacion unaAsignacion = new Asignacion(unParcial);
+		
 		try {
-			unParcial.agregarNota("5");
+			unaAsignacion.agregarNota("5");
 		} catch (NotaInvalidaException e) {
 			e.printStackTrace();
 		}
 		try {
-			unParcial.agregarNota("3");
+			unaAsignacion.agregarNota("3");
 		} catch (NotaInvalidaException e) {
 			e.printStackTrace();
 		}
 		try {
-			unParcial.agregarNota("4");
+			unaAsignacion.agregarNota("4");
 		} catch (NotaInvalidaException e) {
 			e.printStackTrace();
 		}
 		try {
 			try {
-				unParcial.agregarNota("10");
+				unaAsignacion.agregarNota("10");
 			} catch (NotaInvalidaException e) {
 				e.printStackTrace();
 			}
@@ -46,24 +49,26 @@ public class ParcialTest {
 	public void ParcialRecibeNotaInvalidaTest() throws LimiteDeNotasException, NotaInvalidaException {
 	
 		Parcial unParcial = new Parcial(null, new NotaNumerica());
+		Asignacion unaAsignacion = new Asignacion(unParcial);
+		
 		try {
-			unParcial.agregarNota("5");
+			unaAsignacion.agregarNota("5");
 		} catch (NotaInvalidaException e) {
 			e.printStackTrace();
 		}
 		try {
-			unParcial.agregarNota("3");
+			unaAsignacion.agregarNota("3");
 		} catch (NotaInvalidaException e1) {
 			e1.printStackTrace();
 		}
 		try {
-			unParcial.agregarNota("4");
+			unaAsignacion.agregarNota("4");
 		} catch (NotaInvalidaException e) {
 			e.printStackTrace();
 		}
 		try {
 			try {
-				unParcial.agregarNota("M");
+				unaAsignacion.agregarNota("M");
 			} catch (NotaInvalidaException e) {
 				e.printStackTrace();
 			}

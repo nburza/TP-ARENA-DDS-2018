@@ -9,7 +9,6 @@ import dominio.exceptions.NotaInvalidaException;
 public class Tarea {
 	
 	protected String descripcion;
-	protected List<String> notas = new ArrayList<String>();
 	protected TipoDeNota tipoDeNota;
 	
 	public Tarea(String descripcion, TipoDeNota tipoDeNota) {
@@ -22,25 +21,14 @@ public class Tarea {
 		
 		return this.descripcion;
 	}
-	public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNotasException {
-		
-		if (tipoDeNota.esNotaValida(unaNota)) {
-			
-			this.notas.add(unaNota);
-		}
-		else {
-			
-			throw new NotaInvalidaException("La nota ingresada es invalida");
-		}
-	}
 	
-	public String notaActual() {
+	public TipoDeNota getTipoDeNota() {
 		
-		return notas.get(notas.size() - 1);
+		return this.tipoDeNota;
 	}
-	
-	public boolean estaAprobada() {
+
+	public boolean esNotaValida(String unaNota, Asignacion asignacion) {
 		
-		return tipoDeNota.esAprobatoria(this.notaActual());
+		return this.tipoDeNota.esNotaValida(unaNota);
 	}
 }

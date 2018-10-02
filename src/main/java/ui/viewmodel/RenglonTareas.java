@@ -2,7 +2,7 @@ package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import dominio.Tarea;
+import dominio.Asignacion;
 
 @Observable
 public class RenglonTareas {
@@ -11,11 +11,11 @@ public class RenglonTareas {
 	private String notaActual;
 	private String aprobo;
 	
-	public RenglonTareas(Tarea unaTarea) {
+	public RenglonTareas(Asignacion unaAsignacion) {
 		
-		this.descripcion = unaTarea.getDescripcion();
-		this.notaActual = unaTarea.notaActual();
-		if(unaTarea.estaAprobada()) {
+		this.descripcion = unaAsignacion.getTarea().getDescripcion();
+		this.notaActual = unaAsignacion.notaActual();
+		if(unaAsignacion.estaAprobada()) {
 			this.aprobo = "SI";
 		}
 		else {

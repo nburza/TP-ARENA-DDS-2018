@@ -1,11 +1,13 @@
 package arena;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.uqbar.arena.Application;
 
 import org.uqbar.arena.windows.Window;
 
+import dominio.Asignacion;
 import dominio.Estudiante;
 import dominio.NotaConceptual;
 import dominio.NotaNumerica;
@@ -25,22 +27,24 @@ public class LectorDeEstudiantes extends Application {
 
 	@Override
 	protected Window<?> createMainWindow() {
-		Estudiante nompe = new Estudiante("Nom","Ape","10","git", "pass", new HashSet<Tarea>());
+		Estudiante nompe = new Estudiante("Nom","Ape","10","git", "pass", new HashSet<Asignacion>());
 		NotaNumerica num = new NotaNumerica();
 		Tarea tarea = new Tarea("prueba", num);
+		Asignacion asignacion = new Asignacion(tarea);
 		try {
-			tarea.agregarNota("7");
+			asignacion.agregarNota("7");
 		} catch (NotaInvalidaException | LimiteDeNotasException e1) {
 			e1.printStackTrace();
 		}
 		Tarea tarea2 = new Tarea("Exposicion", new NotaConceptual());
+		Asignacion asignacion2 = new Asignacion(tarea2);
 		try {
-			tarea2.agregarNota("M");
+			asignacion2.agregarNota("M");
 		} catch (NotaInvalidaException | LimiteDeNotasException e1) {
 			e1.printStackTrace();
 		}
-		nompe.agregarTarea(tarea);
-		nompe.agregarTarea(tarea2);
+		nompe.agregarAsignacion(asignacion);
+		nompe.agregarAsignacion(asignacion2);
 		RepositorioDeEstudiantes repositorioDeEstudiantes = new RepositorioDeEstudiantes();
 		try {
 			repositorioDeEstudiantes.agregar(nompe);

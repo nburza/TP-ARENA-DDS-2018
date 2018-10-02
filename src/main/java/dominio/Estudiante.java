@@ -2,7 +2,6 @@ package dominio;
 
 import java.util.Collection;
 import java.util.HashSet;
-import dominio.Tarea;
 
 public class Estudiante {
 	
@@ -11,18 +10,18 @@ public class Estudiante {
 	private String legajo;
 	private String usuarioGithub;
 	private String pass;
-	private Collection<Tarea> tareas = new HashSet<Tarea>();
+	private Collection<Asignacion> asignaciones = new HashSet<Asignacion>();
 	
 	public Estudiante(	String nombre, String apellido, String legajo, 
 						String usuarioGithub, String pass, 
-						Collection<Tarea> tareas) {
+						Collection<Asignacion> asignaciones) {
 
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuarioGithub = usuarioGithub;
 		this.pass = pass;
-		this.tareas = tareas;
+		this.asignaciones = asignaciones;
 	}
 
 	public String getNombre() {
@@ -64,14 +63,14 @@ public class Estudiante {
 		this.usuarioGithub = usuarioGithub;
 	}
 	
-	public void agregarTarea(Tarea unaTarea) {
+	public void agregarAsignacion(Asignacion unaAsignacion) {
 		
-		this.tareas.add(unaTarea);
+		this.asignaciones.add(unaAsignacion);
 	}
 
-	public Collection<Tarea> getTareas() {
+	public Collection<Asignacion> getAsignaciones() {
 		
-		return this.tareas;
+		return this.asignaciones;
 
 	}
 

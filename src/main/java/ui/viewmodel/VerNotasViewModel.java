@@ -10,6 +10,7 @@ import dominio.Estudiante;
 @Observable
 public class VerNotasViewModel {
 
+	@SuppressWarnings("unused")
 	private Estudiante unEstudiante;
 	private List<RenglonTareas> renglonesTareas;
 	
@@ -17,7 +18,7 @@ public class VerNotasViewModel {
 		
 		this.renglonesTareas = 
 				unEstudiante
-				.getTareas()
+				.getAsignaciones()
 				.stream()
 				.map(t -> new RenglonTareas(t))
 				.collect(Collectors.toList());
