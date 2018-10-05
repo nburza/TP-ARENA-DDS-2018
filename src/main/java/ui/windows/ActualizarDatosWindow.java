@@ -42,9 +42,26 @@ public class ActualizarDatosWindow  extends SimpleWindow<ActualizarDatosViewMode
 	protected void addActions(Panel panelAction) {
 		// TODO Auto-generated method stub
 		new Button(panelAction)
+		.setCaption("Guardar Cambios")
+		.onClick(() -> {
+			try {
+				guardarCambios();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
+		new Button(panelAction)
 		.setCaption("Volver")
 		.onClick(this::volver);
 		
+	}
+	
+	private void guardarCambios() throws Exception {
+		
+		this.getModelObject().guardarCambios();
+		this.close();
 	}
 	
 	private void volver() {

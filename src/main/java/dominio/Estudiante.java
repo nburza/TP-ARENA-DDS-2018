@@ -3,13 +3,19 @@ package dominio;
 import java.util.Collection;
 import java.util.HashSet;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Estudiante {
 	
-	private String nombre;
-	private String apellido;
+	@SerializedName("code")
 	private String legajo;
+	@SerializedName("first_name")
+	private String nombre;
+	@SerializedName("last_name")
+	private String apellido;
+	@SerializedName("github_user")
 	private String usuarioGithub;
-	private String pass;
+	@SerializedName("assignments")
 	private Collection<Asignacion> asignaciones = new HashSet<Asignacion>();
 	
 	public Estudiante(	String nombre, String apellido, String legajo, 
@@ -20,7 +26,6 @@ public class Estudiante {
 		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuarioGithub = usuarioGithub;
-		this.pass = pass;
 		this.asignaciones = asignaciones;
 	}
 
@@ -80,13 +85,5 @@ public class Estudiante {
 		this.nombre = nombre2;
 		this.apellido = apellido2;
 		this.usuarioGithub = usuarioGitHub2;
-	}
-	
-	public String getPass() {
-		return pass;
-	}
-
-	public boolean validarPass(String passIngresada) {
-		return pass.equals(passIngresada);
 	}
 }

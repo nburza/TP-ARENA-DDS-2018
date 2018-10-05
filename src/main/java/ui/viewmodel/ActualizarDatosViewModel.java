@@ -1,21 +1,18 @@
 package ui.viewmodel;
 
-import java.util.Collection;
-
 import org.uqbar.commons.model.annotations.Observable;
 
+import comunicacion.StudentService;
 import dominio.Estudiante;
-import dominio.Tarea;
-import dominio.repositorios.RepositorioDeEstudiantes;
 
 @Observable
 public class ActualizarDatosViewModel {
 
 	private Estudiante estudiante;
 
-	public ActualizarDatosViewModel(Estudiante estudiante) {
+	public ActualizarDatosViewModel(String token) throws Exception {
 
-		this.estudiante = estudiante;
+		this.estudiante = new StudentService().consultarEstudiante();
 	}
 
 	public String getLegajo() {
@@ -48,11 +45,17 @@ public class ActualizarDatosViewModel {
 	}
 
 	public String getUsuarioGitHub() {
+		
 		return estudiante.getUsuarioGithub();
 	}
 
 	public void setUsuarioGitHub(String usuarioGitHub) {
 		
 		estudiante.setUsuarioGithub(usuarioGitHub);
+	}
+	
+	public void guardarCambios() throws Exception {
+		
+		new StudentService().actualizarEstudiante(estudiante);
 	}
 }

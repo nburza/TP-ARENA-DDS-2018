@@ -2,9 +2,9 @@ package dominio;
 
 public class Parcial extends Tarea {
 	
-	public Parcial(String descripcion, TipoDeNota tipoDeNota) {
+	public Parcial(String titulo, String descripcion, TipoDeNota tipoDeNota) {
 		
-		super(descripcion, tipoDeNota);
+		super(titulo, descripcion, tipoDeNota);
 	}
 
 	@Override

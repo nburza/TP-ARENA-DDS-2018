@@ -15,7 +15,7 @@ public class ParcialTest {
 	@Test
 	public void ParcialAplicaLimiteDeNotasTest() throws LimiteDeNotasException {
 		
-		Parcial unParcial = new Parcial(null, new NotaNumerica());
+		Parcial unParcial = new Parcial(null, null, new NotaNumerica());
 		Asignacion unaAsignacion = new Asignacion(unParcial);
 		
 		try {
@@ -48,7 +48,7 @@ public class ParcialTest {
 	@Test
 	public void ParcialRecibeNotaInvalidaTest() throws LimiteDeNotasException, NotaInvalidaException {
 	
-		Parcial unParcial = new Parcial(null, new NotaNumerica());
+		Parcial unParcial = new Parcial(null, null, new NotaNumerica());
 		Asignacion unaAsignacion = new Asignacion(unParcial);
 		
 		try {

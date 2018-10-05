@@ -1,21 +1,9 @@
 package arena;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-
 import org.uqbar.arena.Application;
 
 import org.uqbar.arena.windows.Window;
 
-import dominio.Asignacion;
-import dominio.Estudiante;
-import dominio.NotaConceptual;
-import dominio.NotaNumerica;
-import dominio.Tarea;
-import dominio.exceptions.LegajoRepetidoException;
-import dominio.exceptions.LimiteDeNotasException;
-import dominio.exceptions.NotaInvalidaException;
-import dominio.repositorios.RepositorioDeEstudiantes;
 import ui.windows.IngresoWindows;
 
 public class LectorDeEstudiantes extends Application {
@@ -27,30 +15,6 @@ public class LectorDeEstudiantes extends Application {
 
 	@Override
 	protected Window<?> createMainWindow() {
-		Estudiante nompe = new Estudiante("Nom","Ape","10","git", "pass", new HashSet<Asignacion>());
-		NotaNumerica num = new NotaNumerica();
-		Tarea tarea = new Tarea("prueba", num);
-		Asignacion asignacion = new Asignacion(tarea);
-		try {
-			asignacion.agregarNota("7");
-		} catch (NotaInvalidaException | LimiteDeNotasException e1) {
-			e1.printStackTrace();
-		}
-		Tarea tarea2 = new Tarea("Exposicion", new NotaConceptual());
-		Asignacion asignacion2 = new Asignacion(tarea2);
-		try {
-			asignacion2.agregarNota("M");
-		} catch (NotaInvalidaException | LimiteDeNotasException e1) {
-			e1.printStackTrace();
-		}
-		nompe.agregarAsignacion(asignacion);
-		nompe.agregarAsignacion(asignacion2);
-		RepositorioDeEstudiantes repositorioDeEstudiantes = new RepositorioDeEstudiantes();
-		try {
-			repositorioDeEstudiantes.agregar(nompe);
-		} catch (LegajoRepetidoException e) {
-			e.printStackTrace();
-		}
-		return new IngresoWindows(this, repositorioDeEstudiantes);
+		return new IngresoWindows(this);
 	}
 }

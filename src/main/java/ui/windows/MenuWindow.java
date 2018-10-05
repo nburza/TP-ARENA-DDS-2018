@@ -21,11 +21,25 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 		
 		new Button(panelAction)
 		.setCaption("Actualizar mis datos")
-		.onClick(this::actualizarDatos);
+		.onClick(() -> {
+			try {
+				actualizarDatos();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 		
 		new Button(panelAction)
 		.setCaption("Ver mis notas")
-		.onClick(this::verNotas);
+		.onClick(() -> {
+			try {
+				verNotas();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	}
 
 	@Override
@@ -34,17 +48,17 @@ public class MenuWindow extends SimpleWindow<MenuViewModel> {
 		
 	}
 	
-	public void actualizarDatos() {
+	public void actualizarDatos() throws Exception {
 		
 		ActualizarDatosWindow dialog = new ActualizarDatosWindow(this, 
-				new ActualizarDatosViewModel(this.getModelObject().getEstudiante()));
+				new ActualizarDatosViewModel(this.getModelObject().getToken()));
 		dialog.open();
 	}
 	
-	public void verNotas() {
+	public void verNotas() throws Exception {
 		
 		VerNotasWindow verNotasWindow = new VerNotasWindow(this,
-				new VerNotasViewModel(this.getModelObject().getEstudiante()));
+				new VerNotasViewModel(this.getModelObject().getToken()));
 		verNotasWindow.open();
 		
 	}

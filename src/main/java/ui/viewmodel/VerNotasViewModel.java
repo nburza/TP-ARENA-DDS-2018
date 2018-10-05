@@ -5,20 +5,19 @@ import java.util.stream.Collectors;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import comunicacion.StudentService;
 import dominio.Estudiante;
 
 @Observable
 public class VerNotasViewModel {
 
-	@SuppressWarnings("unused")
 	private Estudiante unEstudiante;
 	private List<RenglonTareas> renglonesTareas;
 	
-	public VerNotasViewModel(Estudiante unEstudiante) {
+	public VerNotasViewModel(String token) throws Exception {
 		
 		this.renglonesTareas = 
-				unEstudiante
-				.getAsignaciones()
+				new StudentService().consultarAsignaciones()
 				.stream()
 				.map(t -> new RenglonTareas(t))
 				.collect(Collectors.toList());

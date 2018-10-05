@@ -11,18 +11,18 @@ public class Asignacion {
 	protected Tarea tarea;
 	protected List<String> notas = new ArrayList<String>();
 	
-public Asignacion(Tarea tarea) {
+	public Asignacion(Tarea tarea) {
 
-	this.tarea = tarea;
+		this.tarea = tarea;
 	
 	}
 
-public Tarea getTarea() {
+	public Tarea getTarea() {
 	
-	return this.tarea;
-}
+		return this.tarea;
+	}
 
-public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNotasException {
+	public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNotasException {
 		
 		if (tarea.esNotaValida(unaNota, this)) {
 			
@@ -36,11 +36,16 @@ public void agregarNota(String unaNota) throws NotaInvalidaException, LimiteDeNo
 	
 	public String notaActual() {
 		
+		if(notas.isEmpty()) {
+			return "SIN CARGAR";
+		}
+		else {
 		return notas.get(notas.size() - 1);
+		}
 	}
 	
 	public boolean estaAprobada() {
 		
-		return tarea.getTipoDeNota().esAprobatoria(this.notaActual());
+		return tarea.getTipoDeNota().esAprobatoria(this.notaActual()) || (!notas.isEmpty());
 	}
 }

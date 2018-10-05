@@ -7,15 +7,15 @@ import dominio.Estudiante;
 @Observable
 public class MenuViewModel {
 	
-	private Estudiante estudiante;
+	private String token;
 	
-	public MenuViewModel(Estudiante unEstudiante) {
+	public MenuViewModel(String token) {
 		
-		this.estudiante = unEstudiante;
+		this.token = token;
 	}
 	
-	public Estudiante getEstudiante() {
+	public String getToken() {
 		
-		return estudiante;
+		return token;
 	}
 }

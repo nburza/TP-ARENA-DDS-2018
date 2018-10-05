@@ -11,7 +11,6 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import dominio.Estudiante;
-import dominio.repositorios.RepositorioDeEstudiantes;
 import ui.viewmodel.ActualizarDatosViewModel;
 import ui.viewmodel.DatosIngresadosErroneosViewModel;
 import ui.viewmodel.IngresoViewModel;
@@ -19,8 +18,8 @@ import ui.viewmodel.MenuViewModel;
 
 public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 
-	public IngresoWindows(WindowOwner owner, RepositorioDeEstudiantes repositorio) {
-		super(owner, new IngresoViewModel(repositorio));
+	public IngresoWindows(WindowOwner owner) {
+		super(owner, new IngresoViewModel());
 	}
 
 	@Override
@@ -29,33 +28,21 @@ public class IngresoWindows extends SimpleWindow<IngresoViewModel> {
 		
 		mainPanel.setLayout(new VerticalLayout());
 		
-		new Label(mainPanel).setText("Ingrese el num de Legajo");
-		new TextBox(mainPanel).setWidth(300).bindValueToProperty("legajo");
-		
-		new Label(mainPanel).setText("Ingrese la Password");
-		new PasswordField(mainPanel).setWidth(300).bindValueToProperty("pass");
+		new Label(mainPanel).setText("Ingrese su token personal");
+		new TextBox(mainPanel).setWidth(300).bindValueToProperty("token");
 
 	}
 	
 	protected void addActions(Panel panelAction) {
 		new Button(panelAction)
-		.setCaption("Buscar")
-		.onClick(this::buscarEstudianteYAbrirVentana);
+		.setCaption("Ingresar")
+		.onClick(this::ingresar);
 	}
 	
-	private void buscarEstudianteYAbrirVentana() {
-		if(this.getModelObject().getRepo().validarPassDeUnLegajo(this.getModelObject().getLegajo(),
-															this.getModelObject().getPass())){
-			this.getModelObject().buscarEstudiante(this.getModelObject().getRepo());
-			MenuWindow nuevaVentana = new MenuWindow(this, 
-					new MenuViewModel(this.getModelObject().getEstudiante()));
-			nuevaVentana.open();
-		}
-		else{
-			Dialog<?> dialog = new DatosIngresadosErroneosWindows(this,
-					new DatosIngresadosErroneosViewModel());
-			dialog.open();
-			dialog.onAccept(() -> {});
-		}
+	private void ingresar() {
+	
+		MenuWindow nuevaVentana = new MenuWindow(this, new MenuViewModel(this.getModelObject().getToken()));
+		nuevaVentana.open();
+		
 	}
 }
