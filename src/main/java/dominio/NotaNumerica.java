@@ -6,7 +6,8 @@ public class NotaNumerica implements TipoDeNota {
 //		this.nota = nota;
 //	}
 	
-
+	public NotaNumerica() {	}
+	
 	@Override
 	public boolean esAprobatoria(String unaNota) {
 		

@@ -1,7 +1,5 @@
 package comunicacion;
 import java.io.InputStream;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -14,10 +12,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-
 import dominio.Asignacion;
 import dominio.Estudiante;
 
@@ -28,11 +22,10 @@ public class StudentService {
 	
 	private static final String URL_ESTUDIANTE = "http://notitas.herokuapp.com/student";
 	private static final String URL_ASIGNACIONES = "http://notitas.herokuapp.com/student/assignments";
-	private static final String TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
 	
-	public void actualizarEstudiante(Estudiante estudiante) throws Exception {
+	public void actualizarEstudiante(String token, Estudiante estudiante) throws Exception {
 		HttpPut request = new HttpPut(URL_ESTUDIANTE);
-		request.addHeader("Authorization", TOKEN);
+		request.addHeader("Authorization", "Bearer " + token);
 		String json = gson.toJson(estudiante);
 		request.setEntity(new StringEntity(json, ContentType.APPLICATION_JSON));
 		
@@ -43,9 +36,9 @@ public class StudentService {
 		}
 	}
 	
-	public Estudiante consultarEstudiante() throws Exception {
+	public Estudiante consultarEstudiante(String token) throws Exception {
 		HttpGet request = new HttpGet(URL_ESTUDIANTE);
-		request.addHeader("Authorization", TOKEN);
+		request.addHeader("Authorization", "Bearer " + token);
 		HttpResponse response = client.execute(request);
 		
 		int status = response.getStatusLine().getStatusCode();
@@ -59,9 +52,9 @@ public class StudentService {
 		return estudiante;
 	}
 	
-	public List<Asignacion> consultarAsignaciones() throws Exception {
+	public List<Asignacion> consultarAsignaciones(String token) throws Exception {
 		HttpGet request = new HttpGet(URL_ASIGNACIONES);
-		request.addHeader("Authorization", TOKEN);
+		request.addHeader("Authorization", "Bearer " + token);
 		HttpResponse response = client.execute(request);
 		
 		int status = response.getStatusLine().getStatusCode();

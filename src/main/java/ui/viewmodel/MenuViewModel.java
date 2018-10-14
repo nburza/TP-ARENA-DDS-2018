@@ -2,8 +2,6 @@ package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import dominio.Estudiante;
-
 @Observable
 public class MenuViewModel {
 	

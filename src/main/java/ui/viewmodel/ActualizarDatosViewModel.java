@@ -9,10 +9,12 @@ import dominio.Estudiante;
 public class ActualizarDatosViewModel {
 
 	private Estudiante estudiante;
+	private String token;
 
 	public ActualizarDatosViewModel(String token) throws Exception {
 
-		this.estudiante = new StudentService().consultarEstudiante();
+		this.estudiante = new StudentService().consultarEstudiante(token);
+		this.token = token;
 	}
 
 	public String getLegajo() {
@@ -56,6 +58,6 @@ public class ActualizarDatosViewModel {
 	
 	public void guardarCambios() throws Exception {
 		
-		new StudentService().actualizarEstudiante(estudiante);
+		new StudentService().actualizarEstudiante(token, estudiante);
 	}
 }

@@ -40,12 +40,12 @@ public class Asignacion {
 			return "SIN CARGAR";
 		}
 		else {
-		return notas.get(notas.size() - 1);
+			return notas.get(notas.size() - 1);
 		}
 	}
 	
 	public boolean estaAprobada() {
 		
-		return tarea.getTipoDeNota().esAprobatoria(this.notaActual()) || (!notas.isEmpty());
+		return tarea.getTipoDeNota().esAprobatoria(this.notaActual()) && (!notas.isEmpty());
 	}
 }

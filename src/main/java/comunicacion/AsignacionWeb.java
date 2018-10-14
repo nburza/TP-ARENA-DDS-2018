@@ -5,6 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 import dominio.Asignacion;
+import dominio.NotaConceptual;
 import dominio.NotaNumerica;
 import dominio.Tarea;
 
@@ -38,7 +39,7 @@ public class AsignacionWeb {
 	
 	public Asignacion mapearAsignacion() {
 		
-		return new Asignacion(new Tarea(this.title, this.description, new NotaNumerica()));
+		return new Asignacion(new Tarea(this.title, this.description, new NotaConceptual()));
 	}
 
 	public String getTitle() {
